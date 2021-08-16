@@ -60,6 +60,8 @@ namespace GitHub {
 							else if (!element.compare("<br>"))
 								line.replace(i, element.size(), "\n");
 							else if (!element.compare("</p>"))
+								line.replace(i, element.size(), "\n\n");
+							else if (!element.compare("</div>"))
 							{
 								line.erase(i, element.size());
 
@@ -69,6 +71,8 @@ namespace GitHub {
 
 						comment += line;
 					}
+
+					comment.erase(comment.size() - 2, 2);
 
 					info->comment = comment;
 				}
